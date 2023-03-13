@@ -1,0 +1,10 @@
+[package]
+name = "rust-gpx-analyzer"
+version = "0.0.1"
+authors = ["paulcarroty@users.noreply.github.com"]
+edition = "2021"
+
+[dependencies]
+clippy = "0.0.302"
+geoutils = "0.5.1"
+gpx = "0.8.6"
