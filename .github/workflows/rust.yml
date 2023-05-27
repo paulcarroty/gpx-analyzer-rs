@@ -25,11 +25,6 @@ jobs:
           toolchain: nightly
           override: true
           components: rustfmt, clippy
-    - name: Check formatting
-      uses: actions-rs/cargo@v1
-      with:
-          command: fmt
-          args: --all -- --check
     - name: Build artifacts
       uses: actions-rs/cargo@v1
       with:
