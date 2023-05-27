@@ -1,0 +1,43 @@
+name: Rust
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  strategy:
+  matrix:
+    platform: [ubuntu-latest, windows-latest, macos-latest]
+  runs-on: ${{ matrix.platform }}
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: true
+    - name: Install Rust
+      uses: actions-rs/toolchain@v1
+      with:
+          toolchain: nightly
+          override: true
+          components: rustfmt, clippy
+    - name: Check formatting
+      uses: actions-rs/cargo@v1
+      with:
+          command: fmt
+          args: --all -- --check
+    - name: Build artifacts
+      uses: actions-rs/cargo@v1
+      with:
+          command: build
+          args: '--release'
+    - name: Upload artifacts
+      uses: actions/upload-artifact@master
+      with:
+        name: rust-gpx-analyzer-${{ matrix.platform }}
+        path: |
+          ./target/release/rust-gpx-analyzer
+          ./target/release/rust-gpx-analyzer.exe
