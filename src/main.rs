@@ -1,11 +1,19 @@
 use geoutils::Location;
 use gpx::read;
 use gpx::{Gpx, Track, TrackSegment};
-use std::fs::File;
+use std::env;
+use std::fs;
 use std::io::BufReader;
+use std::process;
 
 fn main() {
-    let file = File::open("src/tour.gpx").unwrap();
+    let args: Vec<String> = env::args().collect();
+    if args.len() == 1 {
+        println!("Please enter a path to .gpx file");
+        process::exit(0x0100);
+    }
+    let file_path = &args[1];
+    let file = fs::File::open(file_path).expect("Should have been able to read the file");
     let filesize = file.metadata().unwrap().len();
     println!("Loading GPX trek with size {} bytes...", filesize);
     let reader = BufReader::new(file);
@@ -29,12 +37,11 @@ fn main() {
     );
 
     // print number of waiypoints in each segment
-      for sgmt in 0..track.segments.len() {
-    //for (index, segment) in &track.segments {
+    for sgmt in 0..track.segments.len() {
+        //for (index, segment) in &track.segments {
         println!(
             "Waypoints in segment {sgmt} : {}",
-            track.segments[sgmt].points.len()
-            //track.segments[index].points.len()
+            track.segments[sgmt].points.len() //track.segments[index].points.len()
         );
     }
 
@@ -98,7 +105,7 @@ fn main() {
         }
     }
 
-    println!("---------------------------------------\nThe best tracks:");
+    println!("--------------------The-best-tracks-------------------\n");
     println!(
         "{}{:?}{}{:?}",
         "Highest elevation: ",
