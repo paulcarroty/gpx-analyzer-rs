@@ -2,7 +2,7 @@ use geoutils::Location;
 use gpx::read;
 use gpx::{Gpx, Track, TrackSegment};
 use std::env;
-use std::fs;
+use std::fs::File;
 use std::io::BufReader;
 use std::process;
 
@@ -13,7 +13,7 @@ fn main() {
         process::exit(0x0100);
     }
     let file_path = &args[1];
-    let file = fs::File::open(file_path).expect("Should have been able to read the file");
+    let file = File::open(file_path).expect("Should have been able to read the file");
     let filesize = file.metadata().unwrap().len();
     println!("Loading GPX trek with size {} bytes...", filesize);
     let reader = BufReader::new(file);
