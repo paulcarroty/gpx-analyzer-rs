@@ -11,7 +11,7 @@ Install Rust and Cargo, and then run:
 
 
 ```
-$ git clone https://github.com/paulcarroty/rs-gpx-analyzer.git && cd rs-gpx-analyzer
+git clone https://github.com/paulcarroty/rs-gpx-analyzer.git && cd rs-gpx-analyzer
 cargo install 
 ```
 
@@ -21,13 +21,14 @@ Alternative way: download [CI artifact](https://github.com/paulcarroty/rs-gpx-an
 
 ### How to use
 
-`$ rs-gpx-analyzer /path/to/file.gpx`
+`rs-gpx-analyzer /path/to/file.gpx`
 
 
 ### Example 
 
 ```
 rust-gpx-analyzer data/tour.gpx
+
 Loading GPX trek with size 162656 bytes...
 The track name is: 1_Roscoff_Morlaix_A
 Number of segments in loaded track: 1
