@@ -1,4 +1,6 @@
-# rs-gpx-analyzer
+# rs-gpx-analyzer  [![BUild Status](https://github.com/paulcarroty/rs-gpx-analyzer/actions/workflows/rust.yml/badge.svg)](https://github.com/paulcarroty/rs-gpx-analyzer/actions)
+
+
 Find the best GPS tracks in GPX (GPS Exchange Format)
 
 You can export GPS tracks from apps like Strava or Nike Run Club and rs-gpx-analyzer will highlight all the top tracks with coordinates.
