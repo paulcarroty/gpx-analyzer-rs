@@ -1,6 +1,5 @@
 use geoutils::Location;
-use gpx::read;
-use gpx::{Gpx, Track, TrackSegment};
+use gpx::{read, Gpx, Track, TrackSegment};
 use std::env;
 use std::fs::File;
 use std::io::BufReader;
