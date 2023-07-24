@@ -1,4 +1,4 @@
-# rs-gpx-analyzer  [![BUild Status](https://github.com/paulcarroty/rs-gpx-analyzer/actions/workflows/rust.yml/badge.svg)](https://github.com/paulcarroty/rs-gpx-analyzer/actions)
+# gpx-analyzer-rs  [![BUild Status](https://github.com/paulcarroty/gpx-analyzer-rs/actions/workflows/rust.yml/badge.svg)](https://github.com/paulcarroty/gpx-analyzer-rs/actions)
 
 
 Find the best GPS tracks in GPX (GPS Exchange Format)
@@ -15,7 +15,7 @@ git clone https://github.com/paulcarroty/rs-gpx-analyzer.git && cd rs-gpx-analyz
 cargo install 
 ```
 
-Alternative way: download [CI artifact](https://github.com/paulcarroty/rs-gpx-analyzer/actions/) for your OS.
+Alternative way: download [CI artifact](https://github.com/paulcarroty/gpx-analyzer-rs/actions/) for your OS.
 
 
 
