@@ -4,6 +4,9 @@ version = "0.0.1"
 authors = ["paulcarroty@users.noreply.github.com"]
 edition = "2021"
 
+
 [dependencies]
 geoutils = "0.5.1"
 gpx = "0.8.6"
+serde_json = "1.0"
+
