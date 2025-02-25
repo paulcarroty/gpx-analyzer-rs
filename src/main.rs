@@ -4,6 +4,18 @@ use std::env;
 use std::fs::File;
 use std::io::BufReader;
 use std::process;
+use serde::Serialize;
+
+#[derive(Serialize)]
+struct TrackResult {
+    track_name: String,
+    number_of_segments: usize,
+    highest_elevation: f64,
+    highest_elevation_location: (f64, f64),
+    longest_distance: f64,
+    longest_distance_location: (f64, f64),
+    longest_distance_elevation: f64,
+}
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -104,21 +116,33 @@ fn main() {
         }
     }
 
-    println!("--------------------The-best-tracks-------------------\n");
-    println!(
-        "{}{:?}{}{:?}",
-        "Highest elevation: ",
-        max_elevation,
-        " at ",
-        [max_elevation_lat, max_elevation_long]
-    );
-    println!(
-        "{}{:?}{}{:?}{}{:?}",
-        "Longest distance: ",
-        max_distance,
-        " at ",
-        [max_distance_lat, max_distance_long],
-        " on elevation ",
-        max_distance_elevation
-    )
+    // println!("--------------------The-best-tracks-------------------\n");
+    // println!(
+    //     "{}{:?}{}{:?}",
+    //     "Highest elevation: ",
+    //     max_elevation,
+    //     " at ",
+    //     [max_elevation_lat, max_elevation_long]
+    // );
+    // println!(
+    //     "{}{:?}{}{:?}{}{:?}",
+    //     "Longest distance: ",
+    //     max_distance,
+    //     " at ",
+    //     [max_distance_lat, max_distance_long],
+    //     " on elevation ",
+    //     max_distance_elevation
+    // )
+    let result = TrackResult {
+        track_name: track_name.as_ref().unwrap().clone(),
+        number_of_segments: track.segments.len(),
+        highest_elevation: max_elevation,
+        highest_elevation_location: (max_elevation_lat, max_elevation_long),
+        longest_distance: max_distance,
+        longest_distance_location: (max_distance_lat, max_distance_long),
+        longest_distance_elevation: max_distance_elevation,
+    };
+
+    let json_result = serde_json::to_string_pretty(&result).unwrap();
+    println!("{}", json_result);
 }
